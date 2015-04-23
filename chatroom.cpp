@@ -28,6 +28,7 @@ int  chatServer::bindfd(int blocklog)
 	addr.sin_family = AF_INET;
 	addr.sin_port   = htons(mPort);
 	addr.sin_addr.s_addr = (mIP != NULL)?inet_addr(mIP):INADDR_ANY;
+	//inet_pton(AF_INET, mIP, &addr.sin_addr);
 	
 	int ret = 0;
 	do
