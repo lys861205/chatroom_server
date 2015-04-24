@@ -38,8 +38,10 @@ private:
 	const chatServer& operator=(const chatServer& rhl);
 private:
 	int  setNoBlocking(int fd);
+	int  setReuseAddr(int fd);
 	int  addEpoll(int fd, int op, unsigned int ev);
 	void closefd(int fd);
+	void movefd(int fd);
 private:
 	User_data *mpUserData;
 	int  mEpollfd;
