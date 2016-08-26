@@ -13,6 +13,8 @@
 
 
 
+//聊天室代码
+
 #define LIMIT_NUM 10
 #define EVENT_NUM 100
 #define MAX_FD 1024
