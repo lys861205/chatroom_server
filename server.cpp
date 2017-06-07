@@ -114,6 +114,8 @@ int ChatServer::runServer(int milliseconds)
 				int fd = pSession->getfd();
 				addEpoll(fd, EPOLL_CTL_DEL, events[i].events, NULL);
 				closeFd(fd);
+				mSessionMap.erase(fd);
+				delete pSession;
 			}
 			else if ( events[i].events & EPOLLIN )
 			{
@@ -124,6 +126,8 @@ int ChatServer::runServer(int milliseconds)
 					int fd = pSession->getfd();
 					addEpoll(fd, EPOLL_CTL_DEL, events[i].events, NULL);
 					closeFd(fd);
+					mSessionMap.erase(fd);
+					delete pSession;
 				}
 			}
 			else if ( events[i].events & EPOLLOUT )
@@ -135,6 +139,8 @@ int ChatServer::runServer(int milliseconds)
 					int fd = pSession->getfd();
 					addEpoll(fd, EPOLL_CTL_DEL, events[i].events, NULL);
 					closeFd(fd);
+					mSessionMap.erase(fd);
+					delete pSession;
 				}
 			}
 		}
